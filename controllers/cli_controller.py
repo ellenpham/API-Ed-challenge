@@ -28,6 +28,12 @@ def seed_db():
             name = "User1",
             email = "user1@email.com",
             password = bcrypt.generate_password_hash("user1pw").decode("utf-8"),
+        ),
+        
+        User(
+            name = "User2",
+            email = "user2@email.com",
+            password = bcrypt.generate_password_hash("user2pw").decode("utf-8")
         )
     ]
 
