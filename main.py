@@ -1,6 +1,9 @@
 from flask import Flask
 import os 
-from init import db, ma, bcrypt, jwt   
+from init import db, ma, bcrypt, jwt
+# import Blueprints
+from controllers.cli_controller import db_commands
+from controllers.auth_controller import auth_bp
 
 # application factory - when flask run, by default, the create_app function will be run first
 def create_app():
@@ -14,5 +17,8 @@ def create_app():
     ma.init_app(app)
     bcrypt.init_app(app)
     jwt.init_app(app)
+
+    app.register_blueprint(db_commands)
+    app.register_blueprint(auth_bp)
 
     return app
